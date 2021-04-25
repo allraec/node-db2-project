@@ -4,12 +4,18 @@ const getAll = () => {
   return db("cars");
 }
 
-const getById = () => {
-  // DO YOUR MAGIC
+const getById = (id) => {
+  return db("cars")
+    .where({id})
+    .first();
 }
 
-const create = () => {
-  // DO YOUR MAGIC
+const create = (car) => {
+  return db("cars")
+    .insert(car)
+    .then(ids => {
+      return getById(ids[0])
+    })
 }
 
 
